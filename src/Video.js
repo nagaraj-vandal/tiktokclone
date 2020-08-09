@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react'
 import './Video.css'
 import VideoFooter from './VideoFooter'
+import VideoSidebar from './VideoSidebar'
 
 
-function Video()
+function Video({ url, channel, description, song, likes, shares, messages })
 {
     const [play, setPlay] = useState(false)
     const videoRef = useRef(null)
@@ -20,8 +21,9 @@ function Video()
 
     return (
         <div className="video" >
-            <video className="video_player" src="http://aws-static.kwai.net/udata/pkg/proweb/www/v_pcnew_0.mp4" loop ref={videoRef} onClick={onVideoPress}></video>
-            <VideoFooter />
+            <video className="video_player" src={url} loop ref={videoRef} onClick={onVideoPress}></video>
+            <VideoFooter channel={channel} description={description} song={song} />
+            <VideoSidebar likes={likes} shares={shares} messages={messages} />
         </div>
     )
 }
